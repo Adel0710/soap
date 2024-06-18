@@ -8,8 +8,6 @@ from .utils import generate_access_token,get_user_from_token
 from .models import Users, Products,Order
 from .serializers import UsersSerializer, ProductsSerializer,OrderSerializer
 import jwt
-from django.shortcuts import get_object_or_404
-from decimal import Decimal
 from django.conf import settings
 from django.db import connection
 from django.views import View
@@ -17,6 +15,8 @@ from django.http.multipartparser import MultiPartParser
 from django.http import QueryDict
 import logging
 import json
+from decimal import Decimal
+from django.shortcuts import get_object_or_404
 
 def index(request):
     return HttpResponse("Bonjour")
@@ -177,7 +177,7 @@ def create_product_view(request):
             product = Products.objects.create(name=name, description=description, price=price, image=image)
             product.save()
             image_url = request.build_absolute_uri(product.image.url) if product.image else None
-            print(f"Saved product image path: {product.image.url if product.image else 'No Image'}")
+            print(f"Saved product image path: {product.iaqmage.url if product.image else 'No Image'}")
             return JsonResponse({
                 'message': 'Product created successfully',
                 'product': {
