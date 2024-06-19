@@ -4,7 +4,7 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: soap
-      MYSQL_USER: root
+      MYSQL_USER: adel
       MYSQL_PASSWORD: 071099
       MYSQL_ROOT_PASSWORD: 071099
     ports:
@@ -25,7 +25,7 @@ services:
       - db
     environment:
       DB_NAME: soap
-      DB_USER: root
+      DB_USER: adel
       DB_PASSWORD: 071099
       DB_HOST: db
       DB_PORT: 3306
@@ -38,6 +38,7 @@ services:
       - "5173:5173"
     volumes:
       - ./Frontend/src:/app/src
+    command: ["npm", "run", "dev"]
     depends_on:
       - web
 

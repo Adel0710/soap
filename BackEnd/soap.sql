@@ -23,10 +23,6 @@ CREATE TABLE IF NOT EXISTS products (
   description VARCHAR(255) DEFAULT NULL,
   price DECIMAL(10,2) DEFAULT NULL,
   image LONGBLOB DEFAULT NULL,
-  category VARCHAR(100) DEFAULT NULL,
-  stock INT DEFAULT 0,
-  ean VARCHAR(13) DEFAULT NULL,
-  brand VARCHAR(100) DEFAULT NULL,
   isAdmin BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -38,6 +34,13 @@ CREATE TABLE IF NOT EXISTS users (
   password VARCHAR(255) DEFAULT NULL,
   isAdmin BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+DROP INDEX IF EXISTS idx_cart_product_id ON cart;
+DROP INDEX IF EXISTS idx_cart_date_of_order ON cart;
+DROP INDEX IF EXISTS idx_orders_user_id ON orders;
+DROP INDEX IF EXISTS idx_orders_order_date ON orders;
+DROP INDEX IF EXISTS idx_products_name ON products;
+DROP INDEX IF EXISTS idx_products_description ON products;
 
 CREATE INDEX idx_cart_product_id ON cart (product_id);
 CREATE INDEX idx_cart_date_of_order ON cart (date_of_order);

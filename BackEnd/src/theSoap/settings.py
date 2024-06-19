@@ -89,7 +89,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'soap',
-        'USER': 'root',
+        'USER': 'adel',
         'PASSWORD': '071099',
         'HOST': '127.0.0.1',
         'PORT': '3306',
